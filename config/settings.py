@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'efeb_backend.orders'
+    'efeb_backend.stock_items'
 ]
 
 MIDDLEWARE = [
