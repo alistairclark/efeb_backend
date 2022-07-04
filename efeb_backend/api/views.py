@@ -1,6 +1,10 @@
 from rest_framework import viewsets
 
-from efeb_backend.api.serializers import CategorySerializer, ManufacturerSerializer, ProductSerializer
+from efeb_backend.api.serializers import (
+    CategorySerializer,
+    ManufacturerSerializer,
+    ProductSerializer,
+)
 from efeb_backend.products.models import Category, Manufacturer, Product
 
 
@@ -17,5 +21,9 @@ class ManufacturerViewSet(viewsets.ReadOnlyModelViewSet):
 class ProductViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    search_fields = ['display_name', 'manufacturer__display_name', 'categories__display_name']
-    filterset_fields = ['manufacturer__slug', 'categories__slug']
+    search_fields = [
+        "display_name",
+        "manufacturer__display_name",
+        "categories__display_name",
+    ]
+    filterset_fields = ["manufacturer__slug", "categories__slug"]

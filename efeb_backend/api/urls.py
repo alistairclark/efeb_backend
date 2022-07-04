@@ -4,9 +4,9 @@ from efeb_backend.api.views import CategoryViewSet, ManufacturerViewSet, Product
 
 
 router = routers.SimpleRouter()
-router.register('categories', CategoryViewSet, basename='category')
-router.register('manufacturers', ManufacturerViewSet, basename='manufacturer')
-router.register('Products', ProductViewSet, basename='Product')
+router.register("categories", CategoryViewSet, basename="category")
+router.register("manufacturers", ManufacturerViewSet, basename="manufacturer")
+router.register("Products", ProductViewSet, basename="Product")
 
-app_name = 'api'
+app_name = "api"
 urlpatterns = router.urls
