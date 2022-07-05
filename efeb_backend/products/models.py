@@ -5,6 +5,9 @@ class Manufacturer(models.Model):
     display_name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255)
 
+    def __str__(self):
+        return self.display_name
+
 
 class Category(models.Model):
     display_name = models.CharField(max_length=255)
@@ -12,6 +15,9 @@ class Category(models.Model):
 
     class Meta:
         verbose_name_plural = "Categories"
+
+    def __str__(self):
+        return self.display_name
 
 
 class Product(models.Model):
@@ -24,3 +30,6 @@ class Product(models.Model):
     manufacturer = models.ForeignKey(Manufacturer, null=True, on_delete=models.SET_NULL)
     links = models.TextField()
     slug = models.SlugField(max_length=255)
+
+    def __str__(self):
+        return self.display_name
