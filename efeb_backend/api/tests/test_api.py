@@ -34,7 +34,7 @@ class ProductTestCase(TestCase):
     def setUp(self):
         self.client = Client()
         self.product = ProductFactory()
-        self.list_url = reverse("api:Product-list")
+        self.list_url = reverse("api:product-list")
 
     def test_list(self):
         response = self.client.get(self.list_url)
