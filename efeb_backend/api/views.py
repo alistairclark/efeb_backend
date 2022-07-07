@@ -1,4 +1,5 @@
 from rest_framework import viewsets
+from efeb_backend.api.filters import ProductFilter
 
 from efeb_backend.api.serializers import (
     CategorySerializer,
@@ -26,4 +27,4 @@ class ProductViewSet(viewsets.ReadOnlyModelViewSet):
         "manufacturer__display_name",
         "categories__display_name",
     ]
-    filterset_fields = ["manufacturer__slug", "categories__slug"]
+    filterset_class = ProductFilter
