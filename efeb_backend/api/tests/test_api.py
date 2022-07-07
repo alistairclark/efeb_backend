@@ -86,7 +86,9 @@ class ProductTestCase(TestCase):
     def test_search(self):
         manufacturer = ManufacturerFactory()
         category = CategoryFactory()
-        other_product = ProductFactory()
+
+        # We never expect this product to show up
+        ProductFactory()
 
         self.product.manufacturer = manufacturer
         self.product.save()
