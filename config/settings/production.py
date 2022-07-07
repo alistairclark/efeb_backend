@@ -1,7 +1,11 @@
+import dj_database_url
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
 from config.settings.base import *
+
+
+DATABASES["default"] = dj_database_url.config(conn_max_age=600)
 
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 DEBUG = False
