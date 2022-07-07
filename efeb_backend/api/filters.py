@@ -13,11 +13,11 @@ class ProductFilter(django_filters.FilterSet):
 
     def filter_manufacturer(self, queryset, name, value):
         manufacturer_slugs = value.split(",")
-        return queryset.filter(manufacturer__slug__in=manufacturer_slugs)
+        return queryset.filter(manufacturer__slug__in=manufacturer_slugs).distinct()
 
     def filter_categories(self, queryset, name, value):
         category_slugs = value.split(",")
-        return queryset.filter(categories__slug__in=category_slugs)
+        return queryset.filter(categories__slug__in=category_slugs).distinct()
 
     class Meta:
         model = Product

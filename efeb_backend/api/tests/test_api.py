@@ -59,8 +59,8 @@ class ProductTestCase(TestCase):
             f"{self.list_url}?manufacturer={manufacturer.slug},{other_manufacturer.slug}"
         )
 
-        assert response.json()[1].get("slug") == self.product.slug
-        assert response.json()[0].get("slug") == product_by_manufacturer.slug
+        assert response.json()[0].get("slug") == self.product.slug
+        assert response.json()[1].get("slug") == product_by_manufacturer.slug
 
     def test_filter_by_categories(self):
         category_1 = CategoryFactory()
@@ -86,6 +86,7 @@ class ProductTestCase(TestCase):
     def test_search(self):
         manufacturer = ManufacturerFactory()
         category = CategoryFactory()
+        other_product = ProductFactory()
 
         self.product.manufacturer = manufacturer
         self.product.save()
