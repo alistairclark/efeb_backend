@@ -46,11 +46,20 @@ class ProductTestCase(TestCase):
         manufacturer = ManufacturerFactory()
         product_by_manufacturer = ProductFactory(manufacturer=manufacturer)
 
-        response = self.client.get(
-            f"{self.list_url}?manufacturer__slug={manufacturer.slug}"
-        )
+        response = self.client.get(f"{self.list_url}?manufacturer={manufacturer.slug}")
 
         assert response.json()[0].get("slug") != self.product.slug
+        assert response.json()[0].get("slug") == product_by_manufacturer.slug
+
+        other_manufacturer = ManufacturerFactory()
+        self.product.manufacturer = other_manufacturer
+        self.product.save()
+
+        response = self.client.get(
+            f"{self.list_url}?manufacturer={manufacturer.slug},{other_manufacturer.slug}"
+        )
+
+        assert response.json()[1].get("slug") == self.product.slug
         assert response.json()[0].get("slug") == product_by_manufacturer.slug
 
     def test_filter_by_categories(self):
@@ -63,19 +72,16 @@ class ProductTestCase(TestCase):
         product_category_2 = ProductFactory()
         product_category_2.categories.add(category_2)
 
-        response = self.client.get(
-            f"{self.list_url}?categories__slug={category_1.slug}"
-        )
+        response = self.client.get(f"{self.list_url}?categories={category_1.slug}")
 
         assert len(response.json()) == 1
         assert response.json()[0].get("slug") == product_category_1.slug
 
         response = self.client.get(
-            f"{self.list_url}?categories__slug={category_2.slug}"
+            f"{self.list_url}?categories={category_1.slug},{category_2.slug}"
         )
 
-        assert len(response.json()) == 1
-        assert response.json()[0].get("slug") == product_category_2.slug
+        assert len(response.json()) == 2
 
     def test_search(self):
         manufacturer = ManufacturerFactory()
