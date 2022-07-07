@@ -145,6 +145,4 @@ REST_FRAMEWORK = {
 
 # django-cors-headers
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-]
+CORS_ALLOWED_ORIGINS = ["http://localhost:3000", "https://efeb-frontend.herokuapp.com/"]
