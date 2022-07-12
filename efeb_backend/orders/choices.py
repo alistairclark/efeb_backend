@@ -1,0 +1,5 @@
+SUCCESS = "SUCCESS"
+PENDING = "PENDING"
+FAILED = "FAILED"
+
+ORDER_STATUSES = [(SUCCESS, "Success"), (PENDING, "Pending"), (FAILED, "Failed")]

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "efeb_backend.api",
     "efeb_backend.products",
+    "efeb_backend.orders",
     "rest_framework",
     "django_filters",
     "corsheaders",
@@ -145,4 +146,8 @@ REST_FRAMEWORK = {
 
 # django-cors-headers
 
-CORS_ALLOWED_ORIGINS = ["http://localhost:3000", "https://efeb-frontend.herokuapp.com/"]
+CORS_ALLOWED_ORIGINS = ["http://localhost:3000", "https://efeb-frontend.herokuapp.com"]
+
+# Stripe
+STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
+STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_PUBLIC_KEY")
