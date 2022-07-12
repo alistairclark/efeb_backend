@@ -20,7 +20,8 @@ def checkout(request):
     cart = json.loads(cart_raw)
 
     line_items = []
-    for item in cart:
+    for item_raw in cart:
+        item = json.loads(item_raw)
         for _ in range(item.get("quantity")):
             line_items.append(
                 {
