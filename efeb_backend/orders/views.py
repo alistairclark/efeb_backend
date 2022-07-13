@@ -14,20 +14,19 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 @csrf_exempt
 def checkout(request):
     cart_raw = request.POST.get("cart")
-
     if cart_raw is None:
         return HttpResponse("Borked")
     cart = json.loads(cart_raw)
 
     line_items = []
-    for item_raw in cart:
-        item = json.loads(item_raw)
+    for item in cart.values():
+        data = item.get("data")
         for _ in range(item.get("quantity")):
             line_items.append(
                 {
                     "currency": "GBP",
-                    "amount": int(float(item.get("price")) * 100),
-                    "name": item.get("display_name"),
+                    "amount": int(float(data.get("price")) * 100),
+                    "name": data.get("display_name"),
                 }
             )
 

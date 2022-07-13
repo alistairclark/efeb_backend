@@ -1,0 +1,10 @@
+from re import M
+
+
+multiple_items_json = {
+    "cart": '{"canyon":{"data":{"manufacturer":{"display_name":"Electro-Harmonix","slug":"electro-harmonix"},"categories":[{"display_name":"Delay","slug":"delay"},{"display_name":"Looping","slug":"looping"}],"display_name":"Canyon","price":"60.00","picture":"https://efeb-backend-media.s3.amazonaws.com/electro_harmonix_canyon_delay_and_looper_1325575.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQZLOUKRABQNNZKCL%2F20220713%2Feu-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220713T154219Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=842567eaa52b7ee4155cdaa4125d6c073eaa65f83f02510115bc22bd0a3c32a4","stock_count":1,"description":"Multi-function delay pedal","links":"https://example.com","slug":"canyon"},"quantity":1},"metal-zone-mt-2":{"data":{"manufacturer":{"display_name":"Boss","slug":"boss"},"categories":[{"display_name":"Distortion","slug":"distortion"}],"display_name":"Metal Zone MT-2","price":"45.00","picture":"https://efeb-backend-media.s3.amazonaws.com/bomt2-xl-01.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQZLOUKRABQNNZKCL%2F20220713%2Feu-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220713T154229Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=06e218bb2eee2ea63b9760cb048cea98d39f01ef5ddacd7479e2ed4c5be6a159","stock_count":1,"description":"Boss Metal Zone MT-2","links":"https://boss.com","slug":"metal-zone-mt-2"},"quantity":1}}'
+}
+
+multiples_of_one_item_json = {
+    "cart": '{"metal-zone-mt-2":{"data":{"manufacturer":{"display_name":"Boss","slug":"boss"},"categories":[{"display_name":"Distortion","slug":"distortion"}],"display_name":"Metal Zone MT-2","price":"45.00","picture":"https://efeb-backend-media.s3.amazonaws.com/bomt2-xl-01.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQZLOUKRABQNNZKCL%2F20220713%2Feu-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220713T155746Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=d5ce34d51aa63d2ebd59306af38c715c48b13a3b5cd7df2b02626a24a6be072d","stock_count":10,"description":"Boss Metal Zone MT-2","links":"https://boss.com","slug":"metal-zone-mt-2"},"quantity":4}}'
+}
