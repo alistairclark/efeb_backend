@@ -21,24 +21,22 @@ def checkout(request):
     line_items = []
     for item in cart.values():
         data = item.get("data")
-        for _ in range(item.get("quantity")):
-            line_items.append(
-                {
-                    "currency": "GBP",
-                    "amount": int(float(data.get("price")) * 100),
-                    "name": data.get("display_name"),
-                }
-            )
-
-    try:
-        checkout_session = stripe.checkout.Session.create(
-            line_items=line_items,
-            mode="payment",
-            success_url=request.build_absolute_uri(reverse("orders:order-success")),
-            cancel_url=request.build_absolute_uri(reverse("orders:order-cancelled")),
+        quantity = item.get("quantity")
+        line_items.append(
+            {
+                "currency": "GBP",
+                "amount": int(float(data.get("price")) * 100),
+                "name": data.get("display_name"),
+                "quantity": quantity,
+            }
         )
-    except Exception as e:
-        return str(e)
+
+    checkout_session = stripe.checkout.Session.create(
+        line_items=line_items,
+        mode="payment",
+        success_url=request.build_absolute_uri(reverse("orders:order-success")),
+        cancel_url=request.build_absolute_uri(reverse("orders:order-cancelled")),
+    )
 
     return redirect(checkout_session.url, code=303)
 

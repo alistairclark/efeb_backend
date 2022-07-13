@@ -38,4 +38,4 @@ class TestCheckout(TestCase):
         )
 
         _, kwargs = mocked_stripe.checkout.Session.create.call_args
-        assert len(kwargs.get("line_items")) == 4
+        assert kwargs.get("line_items")[0].get("quantity") == 4
