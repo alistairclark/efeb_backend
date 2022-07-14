@@ -57,7 +57,7 @@ class TestWebhook(TestCase):
     @patch("efeb_backend.orders.views.stripe")
     def test_webhook(self, mocked_stripe):
         mocked_stripe.Webhook.construct_event.return_value = stripe_webhook_data
-        self.client.post(self.url, data={}, STRIPE_SIGNATURE="test")
+        self.client.post(self.url, data={}, **{"Stripe-Signature": "test"})
         mocked_stripe.Webhook.construct_event.assert_called()
         self.order.refresh_from_db()
 
