@@ -1,7 +1,7 @@
 from django.test import Client, TestCase
 from django.urls import reverse
 
-from efeb_backend.api.tests.factories import (
+from efeb_backend.products.tests.factories import (
     CategoryFactory,
     ManufacturerFactory,
     ProductFactory,

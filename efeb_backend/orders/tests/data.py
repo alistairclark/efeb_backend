@@ -9,6 +9,10 @@ multiples_of_one_item_json = {
     "cart": '{"metal-zone-mt-2":{"data":{"manufacturer":{"display_name":"Boss","slug":"boss"},"categories":[{"display_name":"Distortion","slug":"distortion"}],"display_name":"Metal Zone MT-2","price":"45.00","picture":"https://efeb-backend-media.s3.amazonaws.com/bomt2-xl-01.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQZLOUKRABQNNZKCL%2F20220713%2Feu-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220713T155746Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=d5ce34d51aa63d2ebd59306af38c715c48b13a3b5cd7df2b02626a24a6be072d","stock_count":10,"description":"Boss Metal Zone MT-2","links":"https://boss.com","slug":"metal-zone-mt-2"},"quantity":4}}'
 }
 
+insufficient_stock_data = {
+    "cart": '{"metal-zone-mt-2":{"data":{"manufacturer":{"display_name":"Boss","slug":"boss"},"categories":[{"display_name":"Distortion","slug":"distortion"}],"display_name":"Metal Zone MT-2","price":"45.00","picture":"https://efeb-backend-media.s3.amazonaws.com/bomt2-xl-01.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQZLOUKRABQNNZKCL%2F20220713%2Feu-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220713T155746Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=d5ce34d51aa63d2ebd59306af38c715c48b13a3b5cd7df2b02626a24a6be072d","stock_count":10,"description":"Boss Metal Zone MT-2","links":"https://boss.com","slug":"metal-zone-mt-2"},"quantity":11}}'
+}
+
 stripe_webhook_data = {
     "data": {
         "object": {

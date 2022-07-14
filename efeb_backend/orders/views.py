@@ -1,12 +1,13 @@
 import json
 
 from django.conf import settings
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest
 from django.shortcuts import redirect
 from django.views.decorators.csrf import csrf_exempt
 
 import stripe
 
+from efeb_backend.products.models import Product
 from efeb_backend.orders.choices import SUCCESS
 from efeb_backend.orders.models import Order
 
@@ -26,16 +27,23 @@ def checkout(request):
     for item in cart.values():
         data = item.get("data")
         quantity = item.get("quantity")
+
+        product = Product.objects.get(slug=data.get("slug"))
+        if product.stock_count < quantity:
+            return HttpResponseBadRequest("Insufficient stock.")
+
         line_items.append(
             {
                 "currency": "GBP",
                 "amount": int(float(data.get("price")) * 100),
                 "name": data.get("display_name"),
                 "quantity": quantity,
+                "id": data.get("slug"),
             }
         )
 
     order = Order.objects.create()
+    order.create_items(line_items)
 
     checkout_session = stripe.checkout.Session.create(
         line_items=line_items,
@@ -62,6 +70,7 @@ def stripe_webhook(request):
 
         order = Order.objects.get(uuid=session.get("client_reference_id"))
         order.status = SUCCESS
+        order.decrement_stock()
         order.save()
 
     return JsonResponse({"message": "Success!"})
