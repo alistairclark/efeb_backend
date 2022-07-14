@@ -34,3 +34,6 @@ sentry_sdk.init(
     # django.contrib.auth) you may enable sending PII data.
     send_default_pii=True,
 )
+
+# Frontend URL
+FRONTEND_URL = "https://efeb-frontend.herokuapp.com/"

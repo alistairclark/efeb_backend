@@ -32,8 +32,9 @@ SECRET_KEY = "django-insecure-yr6a8zd4&3@8%l-ov3-6h)&j8+ltq&&-*@=%o&=4-v-!0i4183
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    "5a23-2-25-117-220.eu.ngrok.io",
+]
 
 # Application definition
 INSTALLED_APPS = [
@@ -151,3 +152,7 @@ CORS_ALLOWED_ORIGINS = ["http://localhost:3000", "https://efeb-frontend.herokuap
 # Stripe
 STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
 STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_PUBLIC_KEY")
+STRIPE_WEBHOOK_SECRET_KEY = os.environ.get("STRIPE_WEBHOOK_SECRET_KEY")
+
+# Frontend URL
+FRONTEND_URL = "http://localhost:3000"
