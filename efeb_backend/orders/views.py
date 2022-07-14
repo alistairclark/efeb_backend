@@ -51,7 +51,7 @@ def checkout(request):
 @csrf_exempt
 def stripe_webhook(request):
     payload = request.POST
-    sig_header = request.META["Stripe-Signature"]
+    sig_header = request.headers.get("Stripe-Signature")
 
     event = stripe.Webhook.construct_event(
         payload, sig_header, settings.STRIPE_WEBHOOK_SECRET_KEY
