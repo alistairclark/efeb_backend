@@ -40,8 +40,8 @@ def checkout(request):
     checkout_session = stripe.checkout.Session.create(
         line_items=line_items,
         mode="payment",
-        success_url=f"{settings.FRONTEND_URL}/success/",
-        cancel_url=f"{settings.FRONTEND_URL}/cancelled/",
+        success_url=f"{settings.FRONTEND_URL}success/",
+        cancel_url=f"{settings.FRONTEND_URL}cancelled/",
         client_reference_id=order.uuid,
     )
 
