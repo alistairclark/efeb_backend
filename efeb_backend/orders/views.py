@@ -9,7 +9,7 @@ import stripe
 
 from efeb_backend.products.models import Product
 from efeb_backend.orders.choices import SUCCESS
-from efeb_backend.orders.models import Order
+from efeb_backend.orders.models import Order, OrderItem
 
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -22,6 +22,8 @@ def checkout(request):
         return HttpResponse("No cart data received")
 
     cart = json.loads(cart_raw)
+
+    order = Order.objects.create()
 
     line_items = []
     for item in cart.values():
@@ -38,12 +40,10 @@ def checkout(request):
                 "amount": int(float(data.get("price")) * 100),
                 "name": data.get("display_name"),
                 "quantity": quantity,
-                "id": data.get("slug"),
             }
         )
 
-    order = Order.objects.create()
-    order.create_items(line_items)
+        OrderItem.objects.create(product=product, order=order, quantity=quantity)
 
     checkout_session = stripe.checkout.Session.create(
         line_items=line_items,

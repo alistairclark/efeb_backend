@@ -19,13 +19,6 @@ class Order(models.Model):
             item.product.stock_count = item.product.stock_count - item.quantity
             item.product.save()
 
-    def create_items(self, line_items):
-        for item in line_items:
-            product = Product.objects.get(slug=item.get("id"))
-            OrderItem.objects.create(
-                order=self, product=product, quantity=item.get("quantity")
-            )
-
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="items")
