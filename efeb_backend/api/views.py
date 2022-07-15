@@ -28,3 +28,4 @@ class ProductViewSet(viewsets.ReadOnlyModelViewSet):
         "categories__display_name",
     ]
     filterset_class = ProductFilter
+    lookup_field = "slug"

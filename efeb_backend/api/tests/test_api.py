@@ -36,6 +36,14 @@ class ProductTestCase(TestCase):
         self.product = ProductFactory()
         self.list_url = reverse("api:product-list")
 
+    def test_detail(self):
+        response = self.client.get(
+            reverse("api:product-detail", kwargs={"slug": self.product.slug})
+        )
+
+        assert response.status_code == 200
+        assert response.json().get("slug") == self.product.slug
+
     def test_list(self):
         response = self.client.get(self.list_url)
 
