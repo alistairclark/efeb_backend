@@ -11,6 +11,9 @@ class Order(models.Model):
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     status = models.CharField(choices=ORDER_STATUSES, max_length=7)
 
+    def __str__(self):
+        return f"{self.uuid} ({self.status})"
+
     def decrement_stock(self):
         for item in self.items.all():
             item.product.stock_count = item.product.stock_count - item.quantity
