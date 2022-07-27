@@ -1,15 +1,20 @@
 import uuid
 
 from django.db import models
-from django.db.models import F
 
 from efeb_backend.products.models import Product
-from efeb_backend.orders.choices import ORDER_STATUSES
+from efeb_backend.orders.choices import ORDER_STATUSES, PENDING
 
 
 class Order(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    status = models.CharField(choices=ORDER_STATUSES, max_length=7)
+    status = models.CharField(choices=ORDER_STATUSES, max_length=7, default=PENDING)
+    customer_name = models.CharField(max_length=255)
+    address_line_1 = models.CharField(max_length=255)
+    address_line_2 = models.CharField(max_length=255, blank=True)
+    city = models.CharField(max_length=255)
+    postcode = models.CharField(max_length=255)
 
     def __str__(self):
         return f"{self.uuid} ({self.status})"

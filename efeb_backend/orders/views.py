@@ -17,13 +17,20 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 @csrf_exempt
 def checkout(request):
-    cart_raw = request.POST.get("cart")
+    post_data = request.POST
+    cart_raw = post_data.get("cart")
     if cart_raw is None:
         return HttpResponse("No cart data received")
 
     cart = json.loads(cart_raw)
 
-    order = Order.objects.create()
+    order = Order.objects.create(
+        customer_name=post_data.get("name"),
+        address_line_1=post_data.get("address_line_1"),
+        address_line_2=post_data.get("address_line_2"),
+        city=post_data.get("city"),
+        postcode=post_data.get("postcode"),
+    )
 
     line_items = []
     for item in cart.values():

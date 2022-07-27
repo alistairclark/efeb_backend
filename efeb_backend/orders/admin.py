@@ -12,5 +12,7 @@ class OrderAdmin(admin.ModelAdmin):
         OrderItemInline,
     ]
 
+    list_display = ["uuid", "created_at"]
+
 
 admin.site.register(Order, OrderAdmin)
