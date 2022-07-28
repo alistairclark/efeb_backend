@@ -147,7 +147,6 @@ REST_FRAMEWORK = {
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "https://efeb-frontend.herokuapp.com",
     "https://efeb.store",
     "http://efeb.store",
 ]
