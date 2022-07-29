@@ -1,6 +1,6 @@
-import json
 from unittest.mock import MagicMock, patch
 
+from django.core import mail
 from django.test import Client, TestCase
 from django.urls import reverse
 from efeb_backend.orders.choices import SUCCESS
@@ -41,6 +41,7 @@ class TestCheckout(TestCase):
 
         assert len(kwargs.get("line_items")) == 2
         assert OrderItem.objects.count() == 2
+        assert len(mail.outbox) > 0
 
     @patch("efeb_backend.orders.views.stripe")
     def test_checkout_single_item(self, mocked_stripe):

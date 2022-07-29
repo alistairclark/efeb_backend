@@ -1,5 +1,6 @@
 import uuid
 
+from django.core.mail import send_mail
 from django.db import models
 
 from efeb_backend.products.models import Product
@@ -23,6 +24,15 @@ class Order(models.Model):
         for item in self.items.all():
             item.product.stock_count = item.product.stock_count - item.quantity
             item.product.save()
+
+    def notify_admin(self):
+        send_mail(
+            "New order received",
+            "A new order has been received.",
+            "efeb@efeb.com",
+            ["alistairclark89@gmail.com"],
+            fail_silently=False,
+        )
 
 
 class OrderItem(models.Model):

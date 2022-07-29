@@ -1,0 +1,76 @@
+<mjml>
+  <mj-head>
+    <mj-font name="Rubik Mono One" href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Rubik:wght@300;500&display=swap" />
+    <mj-style>
+      div {
+      font-family: "Rubik";
+      font-weight: 300;
+      }
+      table {
+      font-weight: 300;
+      }
+    </mj-style>
+  </mj-head>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+        <mj-text background-color="#000000" font-size="20px" color="#000000" font-family="Rubik Mono One">Thanks for your order</mj-text>
+        <mj-divider></mj-divider>
+      </mj-column>
+    </mj-section>
+    <mj-section>
+      <mj-column>
+        <mj-text font-weight=500>
+          Order reference:
+        </mj-text>
+        <mj-text>
+          f224b9d7-7c9b-459b-8e2e-da16544b66e7
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section>
+      <mj-column>
+        <mj-text font-weight=500>Order Details</mj-text>
+        <mj-table>
+          <tr>
+            <td>
+              <mj-text>Order Details:</mj-text>
+            </td>
+            <td>
+              <mj-text>Metal Zone MT-2 x4</mj-text>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mj-text font-weight="500">Total:</mj-text>
+            </td>
+            <td>
+              <mj-text>£45</mj-text>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mj-text font-weight="500">Address:</mj-text>
+            </td>
+            <td>
+              <mj-text>Flat 2/2, Fortrose Street, Glasgow, G11 5NU</mj-text>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mj-text font-weight="500">Status:</mj-text>
+            </td>
+            <td>
+              <mj-text font-weight="300">Paid</mj-text>
+            </td>
+          </tr>
+        </mj-table>
+      </mj-column>
+    </mj-section>
+    <mj-section>
+      <mj-column>
+        <mj-text font-weight=500>Your order will be dispatched within 1 working day.</mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

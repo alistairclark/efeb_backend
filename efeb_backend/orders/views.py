@@ -32,6 +32,8 @@ def checkout(request):
         postcode=post_data.get("postcode"),
     )
 
+    order.notify_admin()
+
     line_items = []
     for item in cart.values():
         data = item.get("data")
