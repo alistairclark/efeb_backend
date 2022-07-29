@@ -36,4 +36,4 @@ sentry_sdk.init(
 )
 
 # Frontend URL
-FRONTEND_URL = "https://efeb.store"
+FRONTEND_URL = "https://efeb.store/"
