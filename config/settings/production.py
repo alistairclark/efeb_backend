@@ -11,7 +11,7 @@ DATABASES["default"] = dj_database_url.config(conn_max_age=600)
 
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 DEBUG = False
-ALLOWED_HOSTS = [".efeb.store"]
+ALLOWED_HOSTS = [".efeb.store", ".herokuapp.com"]
 
 # AWS S3 SETTINGS
 AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY")
