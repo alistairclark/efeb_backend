@@ -1,5 +1,4 @@
 from django.db import models
-from ckeditor.fields import RichTextField
 
 
 class Manufacturer(models.Model):
@@ -26,10 +25,10 @@ class Product(models.Model):
     price = models.DecimalField(decimal_places=2, max_digits=7)
     picture = models.ImageField()
     stock_count = models.IntegerField()
-    description = RichTextField()
+    description = models.TextField()
     categories = models.ManyToManyField(Category)
     manufacturer = models.ForeignKey(Manufacturer, null=True, on_delete=models.SET_NULL)
-    links = RichTextField()
+    links = models.TextField()
     slug = models.SlugField(max_length=255, unique=True)
 
     def __str__(self):
