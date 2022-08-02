@@ -40,10 +40,12 @@ class Order(models.Model):
     def notify_customer(self):
         send_mail(
             "Your order has been placed",
-            render_to_string("emails/checkout_confirmed.html", {"order": self}),
             "efeb@efeb.store",
             [self.email],
             fail_silently=False,
+            html_message=render_to_string(
+                "emails/checkout_confirmed.html", {"order": self}
+            ),
         )
 
     def get_display_total_amount_pence(self):
