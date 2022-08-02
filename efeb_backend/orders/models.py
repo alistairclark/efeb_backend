@@ -40,6 +40,7 @@ class Order(models.Model):
     def notify_customer(self):
         send_mail(
             "Your order has been placed",
+            render_to_string("emails/checkout_confirmed.txt", {"order": self}),
             "efeb@efeb.store",
             [self.email],
             fail_silently=False,

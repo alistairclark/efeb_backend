@@ -1,0 +1,15 @@
+Thanks for your order!
+
+Order reference: {{ order.uuid }}
+
+Order Details:
+
+{{ order.get_display_details }}
+
+Total: {{ order.get_display_total_amount_pence }}
+
+Address: {{ order.get_display_address }}
+
+Status: {{ order.status }}
+
+Your order will be dispatched within 1 working day.
