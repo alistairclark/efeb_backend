@@ -29,7 +29,7 @@ class Order(models.Model):
         send_mail(
             "New order received",
             "A new order has been received.",
-            "efeb@efeb.com",
+            "efeb@efeb.store",
             ["alistairclark89@gmail.com"],
             fail_silently=False,
         )
