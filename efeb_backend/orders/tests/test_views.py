@@ -90,6 +90,7 @@ class TestWebhook(TestCase):
         self.order.refresh_from_db()
 
         assert self.order.status == SUCCESS
+        assert self.order.email == "test@example.com"
 
         self.product.refresh_from_db()
 

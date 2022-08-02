@@ -79,7 +79,9 @@ def stripe_webhook(request):
 
         order = Order.objects.get(uuid=session.get("client_reference_id"))
         order.status = SUCCESS
+        order.email = session.get("customer_details", {}).get("email")
         order.decrement_stock()
         order.save()
+        order.notify_customer()
 
     return JsonResponse({"message": "Success!"})

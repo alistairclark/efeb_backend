@@ -16,6 +16,7 @@ class Order(models.Model):
     address_line_2 = models.CharField(max_length=255, blank=True)
     city = models.CharField(max_length=255)
     postcode = models.CharField(max_length=255)
+    email = models.EmailField(blank=True)
 
     def __str__(self):
         return f"{self.uuid} ({self.status})"
@@ -31,6 +32,15 @@ class Order(models.Model):
             "A new order has been received.",
             "efeb@efeb.store",
             ["alistairclark89@gmail.com"],
+            fail_silently=False,
+        )
+
+    def notify_customer(self):
+        send_mail(
+            "Your order has been placed",
+            "Your order has been placed.",
+            "efeb@efeb.store",
+            [self.email],
             fail_silently=False,
         )
 
