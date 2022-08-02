@@ -71,11 +71,11 @@ class Order(models.Model):
         )
 
     def get_display_details(self):
-        items = ""
+        items = []
         for item in self.items.all():
-            items += f"<div>{item.product.display_name} x{item.quantity}</div>"
+            items.append(f"{item.product.display_name} x{item.quantity}")
 
-        return items
+        return ", ".join(items)
 
 
 class OrderItem(models.Model):
