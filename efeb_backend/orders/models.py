@@ -55,11 +55,11 @@ class Order(models.Model):
         if self.address_line_2 != "":
             return (
                 "{name}, {address_line_1}, {address_line_2}, {city}, {postcode}".format(
-                    self.customer_name,
-                    self.address_line_1,
-                    self.address_line_2,
-                    self.city,
-                    self.postcode,
+                    name=self.customer_name,
+                    address_line_1=self.address_line_1,
+                    address_line_2=self.address_line_2,
+                    city=self.city,
+                    postcode=self.postcode,
                 )
             )
 
