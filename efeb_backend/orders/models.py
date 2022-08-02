@@ -73,7 +73,7 @@ class Order(models.Model):
     def get_display_details(self):
         items = ""
         for item in self.items.all():
-            items += f"<p>{item.product.display_name} x{item.quantity}</p>"
+            items += f"<div>{item.product.display_name} x{item.quantity}</div>"
 
         return items
 
