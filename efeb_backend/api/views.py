@@ -20,7 +20,7 @@ class ManufacturerViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class ProductViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Product.objects.all()
+    queryset = Product.objects.filter(stock_count__gt=0)
     serializer_class = ProductSerializer
     search_fields = [
         "display_name",
