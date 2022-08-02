@@ -4,7 +4,6 @@ from django.conf import settings
 from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest
 from django.shortcuts import redirect
 from django.views.decorators.csrf import csrf_exempt
-
 import stripe
 
 from efeb_backend.products.models import Product
@@ -80,6 +79,7 @@ def stripe_webhook(request):
         order = Order.objects.get(uuid=session.get("client_reference_id"))
         order.status = SUCCESS
         order.email = session.get("customer_details", {}).get("email")
+        order.total_amount_pence = session.get("amount_total")
         order.decrement_stock()
         order.save()
         order.notify_customer()

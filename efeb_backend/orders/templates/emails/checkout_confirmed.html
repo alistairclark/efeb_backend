@@ -166,7 +166,7 @@
                                                 style="font-size:0px;padding:10px 25px;word-break:break-word;">
                                                 <div
                                                     style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:left;color:#000000;">
-                                                    f224b9d7-7c9b-459b-8e2e-da16544b66e7</div>
+                                                    {{ order.uuid }}</div>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -208,7 +208,7 @@
                                                             <mj-text>Order Details:</mj-text>
                                                         </td>
                                                         <td>
-                                                            <mj-text>Metal Zone MT-2 x4</mj-text>
+                                                            <mj-text>{{ order.get_display_details }}</mj-text>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -216,7 +216,8 @@
                                                             <mj-text font-weight="500">Total:</mj-text>
                                                         </td>
                                                         <td>
-                                                            <mj-text>£45</mj-text>
+                                                            <mj-text>{{ order.get_display_total_amount_pence }}
+                                                            </mj-text>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -224,7 +225,7 @@
                                                             <mj-text font-weight="500">Address:</mj-text>
                                                         </td>
                                                         <td>
-                                                            <mj-text>Flat 2/2, Fortrose Street, Glasgow, G11 5NU
+                                                            <mj-text>{{ order.get_display_address }}
                                                             </mj-text>
                                                         </td>
                                                     </tr>
@@ -233,7 +234,7 @@
                                                             <mj-text font-weight="500">Status:</mj-text>
                                                         </td>
                                                         <td>
-                                                            <mj-text font-weight="300">Paid</mj-text>
+                                                            <mj-text font-weight="300">{{ order.status }}</mj-text>
                                                         </td>
                                                     </tr>
                                                 </table>
